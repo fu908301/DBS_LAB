@@ -7,7 +7,27 @@
 
 <body>
 <?php
-	echo "這是中繼站";
+	$dbhost = "localhost";
+    $dbuser = "root";
+    $dbpass = "";
+    $dbname = "auction";
+	$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname) or die('Error with MySQL connection');
+	
+	$account=$_REQUEST['account'];
+	$pwd=$_REQUEST['pwd'];
+	mysqli_query($conn,"SET NAMES 'utf8'");
+	$sql="SELECT pwd FROM user WHERE nickname='$account'";
+	$result = mysqli_query($conn,$sql);
+	$row = mysqli_fetch_assoc($result);
+	if($row['pwd'] != $pwd){
+		echo "帳號或密碼錯誤2";
+		header("Location:http://127.0.0.1/lab/index.php");
+		exit;	
+	}
+	else if($row['pwd'] == $pwd){
+		echo "登入成功";
+	}
+	
 	$jump=$_POST['type'];
 	if($jump=="sell"){
 		header("Location:http://127.0.0.1/lab/sell.php");
