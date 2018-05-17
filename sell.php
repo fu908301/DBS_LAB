@@ -5,8 +5,18 @@
 <title>賣家你好</title>
 </head>
 <body>
-<?php
-echo "這是賣家";
-?>
+	<form action="sell2.php" method="post">
+    請輸入以下商品資料
+    <br>
+    商品名稱:
+	<input type="text" name="i_name">
+    <br>
+    類別
+    <input type="text" name="i_class">
+    <br>
+    起標價
+    <input type="text" name="i_price">
+    <input type ="submit" value="上架">
+    </form>
 </body>
 </html>

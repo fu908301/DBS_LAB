@@ -7,16 +7,18 @@
 
 <body>
 	<?php
+		session_start();
 		$dbhost = "localhost";
     	$dbuser = "root";
     	$dbpass = "";
     	$dbname = "auction";
 		$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname) or die('Error with MySQL connection');
 		
-		$account=$_REQUEST['account'];
-		$pwd=$_REQUEST['pwd'];
-		$phone=$_REQUEST['phone'];
-		$mail=$_REQUEST['mail'];
+		$account = $_REQUEST['account'];
+		$pwd = $_REQUEST['pwd'];
+		$phone = $_REQUEST['phone'];
+		$mail = $_REQUEST['mail'];
+		$_SESSION['id'] = $account;
 		
 		mysqli_query($conn,"SET NAMES 'utf8'");
 		$sql_judge = "SELECT nickname FROM user WHERE nickname='$account'";
@@ -34,7 +36,11 @@
 			echo "SQL insert error";
 			exit;
 		}
-		echo "註冊成功 即將回到首頁";	
+		$sql_save_num = "SELECT Num FROM user WHERE nickname='$account'";
+		$num = mysqli_query($conn, $sql_save_num);
+		$row = mysqli_fetch_assoc($num);
+		$_SESSION['num'] = $row;
+ 		echo "註冊成功 即將回到首頁";	
 		sleep(3);
 		header("Location:http://127.0.0.1/lab/index.php");
 		
