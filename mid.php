@@ -7,6 +7,7 @@
 
 <body>
 <?php
+	session_start();
 	$dbhost = "localhost";
     $dbuser = "root";
     $dbpass = "";
@@ -15,10 +16,14 @@
 	
 	$account=$_REQUEST['account'];
 	$pwd=$_REQUEST['pwd'];
+	
+	
 	mysqli_query($conn,"SET NAMES 'utf8'");
 	$sql="SELECT pwd FROM user WHERE nickname='$account'";
 	$result = mysqli_query($conn,$sql);
 	$row = mysqli_fetch_assoc($result);
+	
+	
 	if($row['pwd'] != $pwd){
 		echo "帳號或密碼錯誤2";
 		header("Location:http://127.0.0.1/lab/index.php");
@@ -27,6 +32,11 @@
 	else if($row['pwd'] == $pwd){
 		echo "登入成功";
 	}
+	$_SESSION['id'] = $account;
+	$sql2="SELECT Num FROM user WHERE nickname='$account'";
+	$result2 = mysqli_query($conn,$sql2);
+	$row2 = mysqli_fetch_assoc($result2);
+	$_SESSION['num'] = $row2['Num'];
 	
 	$jump=$_POST['type'];
 	if($jump=="sell"){

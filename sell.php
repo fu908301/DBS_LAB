@@ -5,6 +5,12 @@
 <title>賣家你好</title>
 </head>
 <body>
+	<?php
+		session_start();
+		$id = $_SESSION['id'];
+		$num = $_SESSION['num'];
+		echo "賣家 " . $num . " 你好" . "<br>";
+	?>
 	<form action="sell2.php" method="post">
     請輸入以下商品資料
     <br>

@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>賣東西處理</title>
+<title>test</title>
 </head>
 <body>
-	<?php
+<?php
 		session_start();
 		$dbhost = "localhost";
     	$dbuser = "root";
@@ -13,14 +13,8 @@
     	$dbname = "auction";
 		$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname) or die('Error with MySQL connection');
 		
-		$name = $_POST['i_name'];
-		$class = $_POST['i_class'];
-		$price = $_POST['i_price'];
-		$id = $_SESSION['id'];
-		$num = $_SESSION['num'];
-		
 		mysqli_query($conn,"SET NAMES 'utf8'");
-		$sql_insert = "INSERT INTO item(sell_num, i_name ,i_class ,s_price) VALUES('$num', '$name', '$class', '$price')";
+		$sql_insert = "INSERT INTO item(sell_num, i_name ,i_class ,s_price) VALUES('1', 'kawasaki', 'bike', '279000')";
 		$result = mysqli_query($conn,$sql_insert);
 		if(!$result){
 			echo "SQL insert error";
