@@ -5,6 +5,28 @@
 <title>競標</title>
 </head>
 <body>
-建立中...請稍等。
+<?php
+	session_start();
+	$dbhost = "localhost";
+    $dbuser = "root";
+    $dbpass = "";
+    $dbname = "auction";
+	$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname) or die('Error with MySQL connection');
+	mysqli_query($conn,"SET NAMES 'utf8'");
+	$item_id = $_POST['buy'];
+	$sql_show = "SELECT * FROM item WHERE I_num='$item_id'";
+	$result = mysqli_query($conn,$sql_show);
+	$row = mysqli_fetch_assoc($result);
+	echo "商品名稱:" . $row["i_name"] . "<br>";
+	echo "商品分類:" . $row["i_class"] . "<br>";
+	echo "起標價:" . $row["s_price"] . "<br>";
+	echo "<br>";
+	echo "你的出價:";
+	echo "<form action='buy3.php' method='post'>";
+    echo "<input type='text' name='price'>";
+    echo "<input type='hidden' name='item' value='$item_id'>";
+    echo "<input type ='submit' value='競標'>";
+?>
+	
 </body>
 </html>

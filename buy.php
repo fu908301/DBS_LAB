@@ -21,21 +21,25 @@
 		if (mysqli_num_rows($result) > 0){
 			echo "<table width='300' border='1'>";
 			while($row = mysqli_fetch_assoc($result)){
+				echo "<form action='buy2.php' method='post'>";
 				$id = $row["sell_num"]; 
+				$item_id = $row["I_num"];
 				$sql_get_name = "SELECT nickname FROM user WHERE Num = '$id'";
 				$get_name = mysqli_query($conn,$sql_get_name);
 				$row2 = mysqli_fetch_assoc($get_name);
 				echo "<tr>";
 				echo "<td>";
+				echo "<input type='hidden' name='buy' value='$item_id'>";
 				echo "賣家姓名:" . $row2["nickname"] . "<br>";
 				echo "商品名稱:" . $row["i_name"] . "<br>";
 				echo "商品分類:" . $row["i_class"] . "<br>";
 				echo "起標價:" . $row["s_price"] . "<br>";
 				echo "</td>";
 				echo "<td>";
-				echo "<input type=\"button\" value=\"點我競標\" onclick=\"window.location.href='http://127.0.0.1/lab/buy2.php'\"/>";
+				echo "<input type ='submit' value='點我競標'>";
 				echo "</td>";
 				echo "</tr>";
+				echo "</form>";
 			}
 			echo "</table>";
 		}
