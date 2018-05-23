@@ -14,10 +14,37 @@
     	$dbname = "auction";
 		$conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname) or die('Error with MySQL connection');
 		mysqli_query($conn,"SET NAMES 'utf8'");
-		
+		$sql_get_class = "SELECT DISTINCT i_class FROM item";
+		$result4 = mysqli_query($conn,$sql_get_class);
+		echo "選擇分類";
+		//下拉選單
+		echo "<form action='buy.php' method='post'>";
+		echo "<select name='YourChoise'>";
+		echo "<option value='all'>all</option>";
+		while($row4 = mysqli_fetch_assoc($result4)){
+			$class = $row4["i_class"];
+			echo "<option value='$class'>$class</option>";
+		}
+		echo "</select>";
+		echo "<input type ='submit' value='選擇'>";
+		echo "</form>";
+		echo "<br>";
+		$select = "";
+		if($_POST['YourChoise'] == null){
+			$select = "all";
+		}
+		else{
+			$select = $_POST['YourChoise'];
+		}
 		$sql_show = "SELECT * FROM item";
+		if($select == "all"){
+			$sql_show = "SELECT * FROM item";
+		}
+		else{
+			$sql_show = "SELECT * FROM item WHERE i_class='$select'";
+		}
 		$result = mysqli_query($conn,$sql_show);
-		$row = mysqli_fetch_assoc($result);
+		//印出商品
 		if (mysqli_num_rows($result) > 0){
 			echo "<table width='300' border='1'>";
 			while($row = mysqli_fetch_assoc($result)){
@@ -27,7 +54,11 @@
 				$sql_get_name = "SELECT nickname FROM user WHERE Num = '$id'";
 				$get_name = mysqli_query($conn,$sql_get_name);
 				$row2 = mysqli_fetch_assoc($get_name);
+				$image = $row["image"];
 				echo "<tr>";
+				echo "<td>";
+				echo "<img src='$image'>";
+				echo "</td>";
 				echo "<td>";
 				echo "<input type='hidden' name='buy' value='$item_id'>";
 				echo "賣家姓名:" . $row2["nickname"] . "<br>";

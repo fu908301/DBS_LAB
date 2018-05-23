@@ -9,9 +9,9 @@
 		session_start();
 		$id = $_SESSION['id'];
 		$num = $_SESSION['num'];
-		echo "賣家 " . $num . " 你好" . "<br>";
+		echo "賣家 " . $id . " 你好" . "<br>";
 	?>
-	<form action="sell2.php" method="post">
+	<form action="sell2.php" method="post" enctype="multipart/form-data">
     請輸入以下商品資料
     <br>
     商品名稱:
@@ -22,6 +22,9 @@
     <br>
     起標價
     <input type="text" name="i_price">
+    圖片
+    <br>
+    <input type="file" name="image">
     <input type ="submit" value="上架">
     </form>
 </body>

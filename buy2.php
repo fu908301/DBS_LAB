@@ -25,6 +25,9 @@
 	echo "<form action='buy3.php' method='post'>";
     echo "<input type='text' name='price'>";
     echo "<input type='hidden' name='item' value='$item_id'>";
+	echo "<br>";
+	echo "想對賣家說的話";
+	echo "<input type='text' name='message' cols='40' rows='5' style='width:200px; height:50px;'>";
     echo "<input type ='submit' value='競標'>";
 ?>
 	

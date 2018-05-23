@@ -25,8 +25,7 @@
 	
 	
 	if($row['pwd'] != $pwd){
-		echo "帳號或密碼錯誤2";
-		header("Location:http://127.0.0.1/lab/index.php");
+		header("Location:http://127.0.0.1/lab/loginerror.php");
 		exit;	
 	}
 	else if($row['pwd'] == $pwd){
