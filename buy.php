@@ -30,7 +30,7 @@
 		echo "</form>";
 		echo "<br>";
 		$select = "";
-		if($_POST['YourChoise'] == null){
+		if(!isset($_POST['YourChoise'])){
 			$select = "all";
 		}
 		else{
