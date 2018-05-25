@@ -31,7 +31,7 @@
 	$price_new = (int)$price;
 	$price_old = (int)$row['s_price'];
 	if($price_new > $price_old){
-		$sql_update = "UPDATE item set s_price='$price_new' WHERE I_num='$id'";	
+		$sql_update = "UPDATE item set s_price='$price_new' WHERE I_num='$item_id'";	
 		$result3 = mysqli_query($conn,$sql_update);
 		header("Location:http://127.0.0.1/lab/enroll.php");
 	}

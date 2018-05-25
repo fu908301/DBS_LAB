@@ -27,5 +27,7 @@
     <input type="file" name="image">
     <input type ="submit" value="上架">
     </form>
+    <br>
+    <input type="button" value="登出" onclick="window.location.href='http://127.0.0.1/lab/index.php'"/>
 </body>
 </html>

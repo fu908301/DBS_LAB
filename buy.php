@@ -64,7 +64,7 @@
 				echo "賣家姓名:" . $row2["nickname"] . "<br>";
 				echo "商品名稱:" . $row["i_name"] . "<br>";
 				echo "商品分類:" . $row["i_class"] . "<br>";
-				echo "起標價:" . $row["s_price"] . "<br>";
+				echo "目前出價:" . $row["s_price"] . "<br>";
 				echo "</td>";
 				echo "<td>";
 				echo "<input type ='submit' value='點我競標'>";
@@ -78,5 +78,7 @@
 			echo "目前沒有商品上架";	
 		}
 ?>
+	<br>
+    <input type="button" value="登出" onclick="window.location.href='http://127.0.0.1/lab/index.php'"/>
 </body>
 </html>

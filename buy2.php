@@ -19,7 +19,7 @@
 	$row = mysqli_fetch_assoc($result);
 	echo "商品名稱:" . $row["i_name"] . "<br>";
 	echo "商品分類:" . $row["i_class"] . "<br>";
-	echo "起標價:" . $row["s_price"] . "<br>";
+	echo "目前出價:" . $row["s_price"] . "<br>";
 	echo "<br>";
 	echo "你的出價:";
 	echo "<form action='buy3.php' method='post'>";
@@ -30,6 +30,7 @@
 	echo "<input type='text' name='message' cols='40' rows='5' style='width:200px; height:50px;'>";
     echo "<input type ='submit' value='競標'>";
 ?>
-	
+	<br>
+    <input type="button" value="登出" onclick="window.location.href='http://127.0.0.1/lab/index.php'"/>
 </body>
 </html>
