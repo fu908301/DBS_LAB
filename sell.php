@@ -28,6 +28,7 @@
     <input type ="submit" value="上架">
     </form>
     <br>
-    <input type="button" value="登出" onclick="window.location.href='http://127.0.0.1/lab/index.php'"/>
+    <input type="button" value="個人資訊" onclick="window.location.href='http://127.0.0.1/lab/profile.php'"/>
+    <input type="button" value="登出" onclick="window.location.href='http://127.0.0.1/lab/logout.php'"/>
 </body>
 </html>

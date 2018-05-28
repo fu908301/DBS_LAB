@@ -53,7 +53,7 @@
 			echo "SQL insert error";
 			exit;
 		}
-		header("Location:http://127.0.0.1/lab/sell.php");
+		header("Location:http://127.0.0.1/lab/buy.php");
 	?>
     <br>
 </body>

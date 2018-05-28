@@ -31,6 +31,6 @@
     echo "<input type ='submit' value='競標'>";
 ?>
 	<br>
-    <input type="button" value="登出" onclick="window.location.href='http://127.0.0.1/lab/index.php'"/>
+    <input type="button" value="登出" onclick="window.location.href='http://127.0.0.1/lab/logout.php'"/>
 </body>
 </html>
